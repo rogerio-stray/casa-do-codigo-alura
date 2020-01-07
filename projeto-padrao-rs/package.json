@@ -1,0 +1,19 @@
+{
+  "name": "casa-do-codigo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "dev:debug": "nodemon --inspect src/server.js"
+  },
+  "repository": "https://github.com/rogerio-stray/casa-do-codigo.git",
+  "author": "rogerio-stray <rogerio_d3@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "sucrase": "^3.12.0"
+  }
+}
