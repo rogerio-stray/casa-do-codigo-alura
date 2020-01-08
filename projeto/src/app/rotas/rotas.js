@@ -1,3 +1,5 @@
+import db from '../../config/database';
+import LivroDao from '../infra/livro-dao';
 export default (app) => {
 
     app.get('/', function(req, resp) {
@@ -16,22 +18,20 @@ export default (app) => {
     });
 
     app.get('/livros', function(req, resp) {
-      resp.marko(
-          require('../views/livros/lista/lista.marko'),
-          {
-              livros: [
-                  { 
-                      id: 1,
-                      titulo: 'Fundamentos do Node'
-                  },
-                  { 
-                      id: 2,
-                      titulo: 'Node Avançado'
-                  }
-              ]
-          }
-  
-      );
-  });
 
+      const livroDao = new LivroDao(db);
+  
+      livroDao.lista(function(erro, resultados) {
+  
+          resp.marko(
+              require('../views/livros/lista/lista.marko'),
+              {
+                  livros: resultados
+              }
+  
+          );
+  
+      });
+  
+  });
 }
